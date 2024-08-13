@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
+import { parseMarkdown } from './utilities/markdownParser';
+
 
 export const App = () => {
   const [markdown, setMarkdown] = useState('');
   const [html, setHtml] = useState('');
 
-  const handleRender = () => {
-    setHtml(markdown);
+  const handleRender = async () => {
+    const markedResult = await parseMarkdown(markdown)
+    setHtml(markedResult);
   };
 
   return (
