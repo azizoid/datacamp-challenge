@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { Header } from './components/Header';
 
 export const App = () => {
   const [markdown, setMarkdown] = useState('');
@@ -10,8 +10,10 @@ export const App = () => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-10">
-      <div className="flex w-3/4 mb-4">
+    <div className="flex flex-col items-center">
+      <Header />
+
+      <div className="flex w-3/4 mb-4 mt-10">
         <textarea
           className="w-1/2 h-64 border p-2 mr-2"
           placeholder="Enter your markdown here..."
