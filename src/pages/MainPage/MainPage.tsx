@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { parseMarkdown } from "../../utilities/markdownParser";
+import { useNavigate } from "react-router-dom";
 
 export const MainPage = () => {
   const [markdown, setMarkdown] = useState('');
   const [html, setHtml] = useState('');
 
+  const navigate = useNavigate()
+
   const handleRender = async () => {
     const markedResult = await parseMarkdown(markdown)
     setHtml(markedResult);
+
+    localStorage.setItem('markdown:markedHtml', markedResult)
+    navigate('/preview')
   };
+
 
   return (
     <>
